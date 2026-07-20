@@ -10,7 +10,7 @@ with open("/app/access.log", encoding="utf-8") as f:
             continue
         total += 1
         ips.add(line.split()[0])
-        m = re.search(r'"(?:GET|POST|PUT|DELETE|HEAD|PATCH) (\S+) ', line)
+        m = re.search(r'"[A-Z]+ (\S+) HTTP/\d(?:\.\d)?"', line)
         if m:
             paths[m.group(1)] += 1
 
